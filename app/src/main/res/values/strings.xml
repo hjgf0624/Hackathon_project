@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Hackathon_Project</string>
+
+    <string name="departmentRankingString">과 순위 : </string>
+    <string name="individualRankingString">개인 순위 : </string>
+    <string name="departmentRank">0</string>
+    <string name="individualRank">0</string>
+    <string name="soccer">축구</string>
+    <string name="basketball">농구</string>
+    <string name="footvolleyball">족구</string>
+    <string name="dodgeball">피구</string>
+    <string name="relay">계주</string>
+    <string name="tugofwar">줄다리기</string>
+    <string name="wrestling">씨름</string>
+    <string name="armwrestling">팔씨름</string>
+    <string name="penaltyshootout">승부차기</string>
+
+
 </resources>
