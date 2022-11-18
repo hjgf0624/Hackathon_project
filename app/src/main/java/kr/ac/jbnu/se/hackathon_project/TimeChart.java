@@ -55,13 +55,10 @@ public class TimeChart extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    String event = dataSnapshot.child("event").getValue(String.class);
-                    String player1 = dataSnapshot.child("player1").getValue(String.class);
-                    String player2 = dataSnapshot.child("player2").getValue(String.class);
-                    String place = dataSnapshot.child("place").getValue(String.class);
-                    String time = dataSnapshot.child("time").getValue(String.class);
+                    MatchData matchData = dataSnapshot.getValue(MatchData.class);
 
-                    listViewAdapter.add(event, player1, player2, place, time);
+                    listViewAdapter.add(matchData.getEvent(), matchData.getPlayer1(), matchData.getPlayer2(), matchData.getPlace(),
+                            matchData.getTime());
                 }
 
                 listViewAdapter.notifyDataSetChanged();

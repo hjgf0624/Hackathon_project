@@ -19,12 +19,14 @@
         android:text="공학체전 승부예측"/>
 
     <EditText
+        android:id="@+id/edt_SignUpStudentNumber"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:hint="학번"
         android:minHeight="48dp" />
 
     <EditText
+        android:id="@+id/edt_SignUpPassword"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:hint="비밀번호"

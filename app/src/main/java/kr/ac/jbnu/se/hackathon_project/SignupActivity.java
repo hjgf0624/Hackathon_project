@@ -1,53 +1,83 @@
 package kr.ac.jbnu.se.hackathon_project;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.Nullable;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+public class SignUpActivity extends AppCompatActivity {
+    EditText edt_SignUpStudentNumber;
+    EditText edt_SignUpDepartment;
+    EditText edt_SignUpName;
+    EditText edt_SignUpPassword;
+    Button btn_Signup;
 
 
-public class SignupActivity extends AppCompatActivity {
-
-    EditText name, department, student_number, pw;
-    Button submit;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup);
 
-        name = findViewById(R.id.edt_SignUpName);
-        department = findViewById(R.id.edt_SignUpDepartment);
-        student_number = findViewById(R.id.edt_SignUpStudentNumber);
-        pw = findViewById(R.id.edt_SignUpPassword);
 
-        submit = findViewById(R.id.btn_Signup);
-        submit.setOnClickListener(new View.OnClickListener(){
+        edt_SignUpStudentNumber = (EditText) findViewById(R.id.edt_SignUpStudentNumber);
+        edt_SignUpDepartment = (EditText) findViewById(R.id.edt_SignUpDepartment);
+        edt_SignUpName = (EditText) findViewById(R.id.edt_SignUpName);
+        edt_SignUpPassword = (EditText) findViewById(R.id.edt_SignUpPassword);
 
-            @Override
-            public void onClick(View view) {
-                String studentName_string = name.getText().toString();
-                String password_string = pw.getText().toString();
-                String department_string = department.getText().toString();
-                String studentNumber_string = student_number.getText().toString();
+        btn_Signup = (Button) findViewById(R.id.btn_Signup);
 
-//                Intent intent = new Intent(SignupActivity.this, userInfo.class);
-//                intent.putExtra("studentName_string", studentName_string);
-//                intent.putExtra("password_string",password_string);
-//                intent.putExtra("department_string",department_string);
-//                intent.putExtra("studentNumber_string",studentNumber_string);
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference table_user = database.getReference("User");
 
-                Intent intent1 = new Intent(SignupActivity.this, LoginActivity.class);
-                startActivity(intent1);
+        btn_Signup.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                final ProgressDialog mDialog = new ProgressDialog(SignUpActivity.this);
+                mDialog.setMessage("기다려 주세요.");
+                mDialog.show();
 
+                table_user.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.child(edt_SignUpStudentNumber.getText().toString()).exists())
+                        {
+                            mDialog.dismiss();
+                            Toast.makeText(SignUpActivity.this, "이미 가입하셨습니다.", Toast.LENGTH_LONG).show();
+                        }
+
+                        else
+                        {
+                            mDialog.dismiss();
+                            UserInfo user = new UserInfo(edt_SignUpStudentNumber.getText().toString(),
+                                    edt_SignUpPassword.getText().toString(), edt_SignUpName.getText().toString(),
+                                    edt_SignUpDepartment.getText().toString());
+                            table_user.child(edt_SignUpStudentNumber.getText().toString()).setValue(user);
+                            Toast.makeText(SignUpActivity.this, "가입 성공하였습니다.", Toast.LENGTH_LONG).show();
+                            Intent loginIntent = new Intent(SignUpActivity.this, LoginActivity.class);
+                            startActivity(loginIntent);
+                            finish();
+                        }
+                    }
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
 
-
     }
-
 }

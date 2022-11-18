@@ -9,6 +9,15 @@ public class MatchData implements Serializable {
     private String player2;
     private String place;
     private String time;
+    public MatchData(){};
+
+    public MatchData(String event, String player1, String player2, String place, String time){
+        this.event = event;
+        this.player1 = player1;
+        this.player2 = player2;
+        this.place = place;
+        this.time = time;
+    }
 
     public void setEvent(String event){
         this.event = event;
