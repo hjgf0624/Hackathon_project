@@ -1,6 +1,8 @@
 package kr.ac.jbnu.se.hackathon_project;
 
-public class UserInfo {
+import java.io.Serializable;
+
+public class UserInfo implements Serializable {
     private String student_Number;
     private String password;
     private String name;

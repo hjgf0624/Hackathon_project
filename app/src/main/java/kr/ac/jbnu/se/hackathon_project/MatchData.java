@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 public class MatchData implements Serializable {
+    private String key;
     private String event;
     private String player1;
     private String player2;
@@ -17,6 +18,10 @@ public class MatchData implements Serializable {
         this.player2 = player2;
         this.place = place;
         this.time = time;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public void setEvent(String event){
@@ -39,6 +44,9 @@ public class MatchData implements Serializable {
         this.time = time;
     }
 
+    public String getKey() {
+        return key;
+    }
 
     public String getEvent(){
         return this.event;

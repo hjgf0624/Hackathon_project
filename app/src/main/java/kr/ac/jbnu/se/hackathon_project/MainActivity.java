@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.auth.User;
+
 public class MainActivity extends AppCompatActivity {
 
     Button soccer, basketball, footvolleyball, dodgeball, relay, tugofwar, wrestling, armwrestling, penaltyshootout;
@@ -18,9 +20,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
-
-
+        Intent intent = getIntent();
+        UserInfo userInfo = (UserInfo) intent.getSerializableExtra("userInfo");
         soccer = findViewById(R.id.btn_soccer);
         basketball = findViewById(R.id.btn_basketball);
         footvolleyball = findViewById(R.id.btn_footvolleyball);
@@ -34,8 +35,9 @@ public class MainActivity extends AppCompatActivity {
         individualScore = findViewById(R.id.txtV_individualScore);
 
         soccer.setOnClickListener(v->{
-            Intent intent = new Intent(this, TimeChart.class);
-            startActivity(intent);
+            Intent soccerIntent = new Intent(this, TimeChart.class);
+            soccerIntent.putExtra("userInfo", userInfo);
+            startActivity(soccerIntent);
         });
 
 

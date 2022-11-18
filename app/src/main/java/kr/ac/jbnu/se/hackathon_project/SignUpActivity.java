@@ -62,7 +62,7 @@ public class SignUpActivity extends AppCompatActivity {
                             mDialog.dismiss();
                             UserInfo user = new UserInfo(edt_SignUpStudentNumber.getText().toString(),
                                     edt_SignUpPassword.getText().toString(), edt_SignUpName.getText().toString(),
-                                    edt_SignUpDepartment.getText().toString(),0,true);
+                                    edt_SignUpDepartment.getText().toString(),0,false);
                             table_user.child(edt_SignUpStudentNumber.getText().toString()).setValue(user);
                             Toast.makeText(SignUpActivity.this, "가입 성공하였습니다.", Toast.LENGTH_LONG).show();
                             Intent loginIntent = new Intent(SignUpActivity.this, LoginActivity.class);

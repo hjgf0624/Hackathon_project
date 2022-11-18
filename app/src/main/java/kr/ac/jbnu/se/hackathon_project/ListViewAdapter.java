@@ -41,8 +41,6 @@ public class ListViewAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         final Context context = viewGroup.getContext();
 
-
-
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.listview_item, viewGroup, false);
@@ -65,15 +63,7 @@ public class ListViewAdapter extends BaseAdapter {
         return view;
     }
 
-    public void add(String event, String player1, String player2, String place, String time){
-        MatchData matchData = new MatchData();
-
-        matchData.setEvent(event);
-        matchData.setPlayer1(player1);
-        matchData.setPlayer2(player2);
-        matchData.setPlace(place);
-        matchData.setTime(time);
-
+    public void add(MatchData matchData){
         MatchDataList.add(matchData);
     }
 }

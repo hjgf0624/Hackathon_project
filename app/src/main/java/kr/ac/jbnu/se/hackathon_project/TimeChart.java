@@ -33,7 +33,8 @@ public class TimeChart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timechart);
 
-        userInfo = new UserInfo();
+        Intent getIntent = getIntent();
+        UserInfo userInfo = (UserInfo) getIntent.getSerializableExtra("userInfo");
         listViewAdapter = new ListViewAdapter();
         listView = findViewById(R.id.listView);
 
@@ -49,11 +50,11 @@ public class TimeChart extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else{
-                    Toast.makeText(TimeChart.this,"ss",Toast.LENGTH_LONG).show();
-                    intent = new Intent(TimeChart.this, Match_Predict.class);
-                    MatchData matchData = listViewAdapter.getItem(i);
-                    intent.putExtra("matchData", matchData);
-                    startActivity(intent);
+                  intent = new Intent(TimeChart.this, Match_Predict.class);
+                  MatchData matchData = listViewAdapter.getItem(i);
+                  intent.putExtra("matchData", matchData);
+                  intent.putExtra("userInfo", userInfo);
+                  startActivity(intent);
                 }
 
             }
@@ -71,9 +72,9 @@ public class TimeChart extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     MatchData matchData = dataSnapshot.getValue(MatchData.class);
+                    matchData.setKey(dataSnapshot.getKey());
 
-                    listViewAdapter.add(matchData.getEvent(), matchData.getPlayer1(), matchData.getPlayer2(), matchData.getPlace(),
-                            matchData.getTime());
+                    listViewAdapter.add(matchData);
                 }
 
                 listViewAdapter.notifyDataSetChanged();
