@@ -66,18 +66,18 @@ public class ManagerActivity extends AppCompatActivity {
         player2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myRef.addValueEventListener(new ValueEventListener() {
+                ArrayList<String> arrayList = new ArrayList<>();
+                myRef.child("player2_win").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot dataSnapshot : snapshot.child("player2_win").getChildren()){
-                            //arrayList.add(dataSnapshot.getKey());
-                            userRef.child(dataSnapshot.getKey()).child("score").setValue(ServerValue.increment(3));
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        for (DataSnapshot dataSnapshot : task.getResult().getChildren()){
+                            arrayList.add(dataSnapshot.getKey());
+                            //userRef.child(dataSnapshot.getKey()).child("score").setValue(ServerValue.increment(3));
                         }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
+                        for(String user : arrayList){
+                            Toast.makeText(ManagerActivity.this, user, Toast.LENGTH_SHORT).show();
+                            userRef.child(user).child("score").setValue(ServerValue.increment(3));
+                        }
                     }
                 });
             }
