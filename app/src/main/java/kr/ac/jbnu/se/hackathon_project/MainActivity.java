@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         individualRank = findViewById(R.id.txtV_individualRank);
 
         soccer.setOnClickListener(v->{
-            Intent intent = new Intent(this, TimeChartActivity.class);
+            Intent intent = new Intent(this, TimeChart.class);
             startActivity(intent);
         });
 

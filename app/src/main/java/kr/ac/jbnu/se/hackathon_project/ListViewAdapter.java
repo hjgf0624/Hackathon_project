@@ -20,7 +20,6 @@ public class ListViewAdapter extends BaseAdapter {
     private TextView place;
     private TextView time;
 
-    
     private ArrayList<MatchData> MatchDataList = new ArrayList<MatchData>();
 
     @Override
@@ -29,7 +28,7 @@ public class ListViewAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
+    public MatchData getItem(int i) {
         return MatchDataList.get(i);
     }
 
@@ -41,6 +40,8 @@ public class ListViewAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         final Context context = viewGroup.getContext();
+
+
 
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

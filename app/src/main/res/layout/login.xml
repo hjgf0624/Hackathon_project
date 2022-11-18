@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".TimeChart"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -30,12 +30,12 @@
         android:hint="비밀번호"
         android:minHeight="48dp" />
 
+
     <Button
         android:id="@+id/btn_SignIn"
+        android:text="로그인"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="로그인"/>
-
+        android:layout_height="wrap_content"/>
     <Button
         android:id="@+id/btn_join"
         android:layout_width="200dp"

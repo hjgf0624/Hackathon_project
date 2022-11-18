@@ -1,8 +1,9 @@
 package kr.ac.jbnu.se.hackathon_project;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class MatchData {
+public class MatchData implements Serializable {
     private String event;
     private String player1;
     private String player2;
