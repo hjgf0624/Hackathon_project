@@ -47,6 +47,9 @@ public class TimeChart extends AppCompatActivity {
                 if(LoginActivity.getIsManager()){
                     Toast.makeText(TimeChart.this,"dd",Toast.LENGTH_LONG).show();
                     intent = new Intent(TimeChart.this, ManagerActivity.class);
+                    MatchData matchData = listViewAdapter.getItem(i);
+                    intent.putExtra("matchData", matchData);
+                    intent.putExtra("userInfo", userInfo);
                     startActivity(intent);
                 }
                 else{

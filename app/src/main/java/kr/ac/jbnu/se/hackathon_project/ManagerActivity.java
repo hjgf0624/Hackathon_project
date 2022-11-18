@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -45,25 +47,19 @@ public class ManagerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ArrayList<String> arrayList = new ArrayList<>();
-                myRef.addValueEventListener(new ValueEventListener() {
+                myRef.child("player1_win").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot dataSnapshot : snapshot.child("player1_win").getChildren()){
-                            //arrayList.add(dataSnapshot.getKey());
-                            userRef.child(dataSnapshot.getKey()).child("score").setValue(ServerValue.increment(3));
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        for (DataSnapshot dataSnapshot : task.getResult().getChildren()){
+                            arrayList.add(dataSnapshot.getKey());
+                            //userRef.child(dataSnapshot.getKey()).child("score").setValue(ServerValue.increment(3));
+                        }
+                        for(String user : arrayList){
+                            Toast.makeText(ManagerActivity.this, user, Toast.LENGTH_SHORT).show();
+                            userRef.child(user).child("score").setValue(ServerValue.increment(3));
                         }
                     }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
                 });
-/*
-                for(String user : arrayList){
-                    Toast.makeText(ManagerActivity.this, user, Toast.LENGTH_SHORT).show();
-                    userRef.child(user).child("score").setValue(ServerValue.increment(3));
-                }*/
             }
         });
 
