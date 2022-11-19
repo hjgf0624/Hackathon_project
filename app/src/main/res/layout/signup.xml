@@ -36,16 +36,28 @@
                 android:layout_width="320dp"
                 android:layout_height="35dp"
                 android:ems="10"
-                android:hint="이름"/>
-            <EditText
-                android:layout_marginLeft="60dp"
+                android:hint="이름"
+                android:privateImeOptions="defultInputmode=korean"/>
+
+            <Spinner
                 android:background="@drawable/edttext"
-                android:layout_marginTop="10dp"
                 android:id="@+id/edt_SignUpDepartment"
+                android:layout_marginLeft="60dp"
                 android:layout_width="320dp"
                 android:layout_height="35dp"
-                android:ems="10"
-                android:hint="학과"/>
+                android:layout_marginTop="10dp"
+                android:autofillHints="학과"
+                ></Spinner>
+            <!--            <EditText-->
+            <!--                android:layout_marginLeft="60dp"-->
+            <!--                android:background="@drawable/edttext"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                android:id="@+id/edt_SignUpDepartment"-->
+            <!--                android:layout_width="320dp"-->
+            <!--                android:layout_height="35dp"-->
+            <!--                android:ems="10"-->
+            <!--                android:hint="학과"-->
+            <!--                android:privateImeOptions="defultInputmode=korean"/>-->
             <EditText
                 android:layout_marginLeft="60dp"
                 android:background="@drawable/edttext"
@@ -54,16 +66,18 @@
                 android:layout_width="320dp"
                 android:layout_height="35dp"
                 android:ems="10"
+                android:inputType="number"
                 android:hint="학번"/>
             <EditText
                 android:layout_marginLeft="60dp"
                 android:background="@drawable/edttext"
                 android:id="@+id/edt_SignUpPassword"
                 android:layout_marginTop="10dp"
-                android:hint="비밀번호"
                 android:layout_width="320dp"
                 android:layout_height="35dp"
-                android:ems="10"/>
+                android:ems="10"
+                android:hint="비밀번호"
+                android:inputType="textPassword"/>
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"

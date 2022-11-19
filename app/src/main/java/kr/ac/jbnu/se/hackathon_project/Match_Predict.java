@@ -2,6 +2,7 @@ package kr.ac.jbnu.se.hackathon_project;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,7 @@ public class Match_Predict extends AppCompatActivity {
     private TextView time;
     private Button player1_win_btn;
     private Button player2_win_btn;
+    private Button open_map_btn;
 
     FirebaseDatabase db;
     DatabaseReference myRef;
@@ -46,6 +48,7 @@ public class Match_Predict extends AppCompatActivity {
         time = findViewById(R.id.time);
         player1_win_btn = findViewById(R.id.player1_win_btn);
         player2_win_btn = findViewById(R.id.player2_win_btn);
+        open_map_btn = findViewById(R.id.open_map_btn);
 
         event.setText(matchData.getEvent());
         player.setText(matchData.getPlayer1() + "vs" + matchData.getPlayer2());
@@ -74,5 +77,13 @@ public class Match_Predict extends AppCompatActivity {
                 prediction_ref.child("player2_win").child(userInfo.getStudent_Number()).setValue(userInfo.getDepartment());
             }
         });
+
+        open_map_btn.setOnClickListener(v->{
+            String url = "kakaomap://look?p=35.84767632497899,127.1280209416696";
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+        });
+
+
     }
 }

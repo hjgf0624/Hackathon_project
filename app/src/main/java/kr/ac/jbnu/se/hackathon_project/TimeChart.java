@@ -79,7 +79,6 @@ public class TimeChart extends AppCompatActivity {
 
                     listViewAdapter.add(matchData);
                 }
-
                 listViewAdapter.notifyDataSetChanged();
             }
 
