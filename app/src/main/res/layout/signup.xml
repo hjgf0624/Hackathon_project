@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2">
+        <TextView
+            android:layout_marginTop="100dp"
+            android:layout_gravity="center_horizontal"
+            android:text="회원가입"
+            android:textSize="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <EditText
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/edttext"
+                android:layout_marginTop="10dp"
+                android:id="@+id/edt_SignUpName"
+                android:layout_width="320dp"
+                android:layout_height="35dp"
+                android:ems="10"
+                android:hint="이름"
+                android:privateImeOptions="defultInputmode=korean"/>
+
+            <Spinner
+                android:background="@drawable/edttext"
+                android:id="@+id/edt_SignUpDepartment"
+                android:layout_marginLeft="60dp"
+                android:layout_width="320dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:autofillHints="학과"
+                ></Spinner>
+            <!--            <EditText-->
+            <!--                android:layout_marginLeft="60dp"-->
+            <!--                android:background="@drawable/edttext"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                android:id="@+id/edt_SignUpDepartment"-->
+            <!--                android:layout_width="320dp"-->
+            <!--                android:layout_height="35dp"-->
+            <!--                android:ems="10"-->
+            <!--                android:hint="학과"-->
+            <!--                android:privateImeOptions="defultInputmode=korean"/>-->
+            <EditText
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/edttext"
+                android:layout_marginTop="10dp"
+                android:id="@+id/edt_SignUpStudentNumber"
+                android:layout_width="320dp"
+                android:layout_height="35dp"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="학번"/>
+            <EditText
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/edttext"
+                android:id="@+id/edt_SignUpPassword"
+                android:layout_marginTop="10dp"
+                android:layout_width="320dp"
+                android:layout_height="35dp"
+                android:ems="10"
+                android:hint="비밀번호"
+                android:inputType="textPassword"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <Button
+                    android:layout_marginLeft="200dp"
+                    android:id="@+id/btn_Signup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="회원가입"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>

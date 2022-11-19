@@ -10,14 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hackathon_Project">
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <data
+                    android:scheme="kakaomap"
+                    android:host="look"/>
+            </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".SignUpActivity"/>
+        <activity android:name=".TimeChart"/>
+
+        <activity android:name=".Match_Predict"/>
+        <activity android:name=".ManagerActivity"/>
     </application>
 
 </manifest>
